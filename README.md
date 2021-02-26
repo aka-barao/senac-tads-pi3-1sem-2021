@@ -6,4 +6,4 @@ Roberto Dias<br>
 Jeferson Monteiro<br> 
 Marcus Rodrigues<br>
 Vinicius Elias<br>
-Laleska Fernandes
+Vinicius Flávio
