@@ -34,7 +34,7 @@ public class DB {
                 properties.load(DB.class.getClassLoader().getResourceAsStream("application.properties"));
 
                 log.info("Conectando ao banco de dados");
-                Connection conexao = DriverManager.getConnection(properties.getProperty("url"), properties);
+                conexao = DriverManager.getConnection(properties.getProperty("url"), properties);
                 log.info("Teste de conexão com o banco de dados: " + conexao.getCatalog());
                 log.info(conexao.getSchema());
             } catch (Exception e) {
