@@ -7,16 +7,13 @@ package entidade;
 
 
 import java.sql.Date;
-import lombok.Getter;
-import lombok.Setter;
 
 
 /**
  *
  * @author Beto
  */
-@Getter
-@Setter
+
 public class Produto {
     private String nome;
     private Date dataFabricacao;
@@ -29,5 +26,39 @@ public class Produto {
         this.dataVencimento = dataVencimento;
         this.preco = preco;
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Date getDataFabricacao() {
+        return dataFabricacao;
+    }
+
+    public void setDataFabricacao(Date dataFabricacao) {
+        this.dataFabricacao = dataFabricacao;
+    }
+
+    public Date getDataVencimento() {
+        return dataVencimento;
+    }
+
+    public void setDataVencimento(Date dataVencimento) {
+        this.dataVencimento = dataVencimento;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+    
+    
 
 }

@@ -32,8 +32,10 @@ public class DB {
                 log.info("Carregando propriedades da aplicação");
                 Properties properties = new Properties();
                 properties.load(DB.class.getClassLoader().getResourceAsStream("application.properties"));
+                log.info(properties.toString());
 
                 log.info("Conectando ao banco de dados");
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
                 conexao = DriverManager.getConnection(properties.getProperty("url"), properties);
                 log.info("Teste de conexão com o banco de dados: " + conexao.getCatalog());
                 log.info(conexao.getSchema());

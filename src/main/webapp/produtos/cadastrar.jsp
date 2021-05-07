@@ -25,7 +25,7 @@
             <label>Preço</label><br/>
             <input type="text" name="preco" required="true"/><br/><br/>
             
-            <button type="submuit">Cadastrar</button>
+            <button type="submit">Cadastrar</button>
         </form>
         
     </body>
