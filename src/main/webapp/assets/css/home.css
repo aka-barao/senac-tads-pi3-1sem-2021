@@ -1,0 +1,66 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 07/05/2021, 23:03:14
+    Author     : monteiro
+*/
+body{
+    background-color: #c6f1e7;
+}
+#ulNav a:link {
+    text-decoration:none; 
+
+}
+#ulNav a {
+    color: white;
+    font-weight: bold;
+    font-size: large;
+}
+#navLogo{
+    border-radius: 25%;
+}
+#botaoPesquisar{
+    background-color: lightblue;
+    color: #59606d;
+    border-color: lightblue;
+}
+.linhaNomePaginas{
+    background-color: lightblue;
+}
+
+.parallax {
+    background-image: url("../img/twitter_profile_image.png");
+    min-height: 700px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+     background-color: #c6f1e7;
+     
+   
+}
+.parallax2 {
+    background-image: url("../img/twitter_profile_image.png");
+    min-height: 600px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #c6f1e7;
+}
+nav{
+    background-color: #59606d;
+}
+
+#footer{
+    background-color: #59606d;
+    color: white;
+}
+#footer a:link{
+   text-decoration: none;
+   color:lightblue ;
+}
+
+/*-------------------------------- Inicio footer ------------------------------*/
+
