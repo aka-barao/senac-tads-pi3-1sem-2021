@@ -6,7 +6,7 @@
 
 
 
-//<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,7 +18,7 @@
         <title>Produto</title>
     </head>
     <body>
-        <c:import url="../nav.jsp"/>
+        <c:import url="nav.jsp"/>
         <h1>Cadastrar Produto:</h1>
         
         <form action="CadastrarProdutoServlet" method="POST">
@@ -33,7 +33,7 @@
             
             <button type="submit">Cadastrar</button>
         </form>
-        <c:import url="../footer.jsp"/>
+        <c:import url="footer.jsp"/>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
     </body>
 </html>

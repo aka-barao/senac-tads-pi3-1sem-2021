@@ -1,0 +1,58 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 09/05/2021, 00:48:41
+    Author     : monteiro
+*/
+
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 07/05/2021, 23:03:14
+    Author     : monteiro
+*/
+body{
+    background-color: #c6f1e7;
+}
+#ulNav a:link {
+    text-decoration:none; 
+
+}
+#ulNav a {
+    color: white;
+    font-weight: bold;
+    font-size: large;
+}
+#navLogo{
+    border-radius: 25%;
+}
+#botaoPesquisar{
+    background-color: lightblue;
+    color: #59606d;
+    border-color: lightblue;
+}
+.linhaNomePaginas{
+    background-color: lightblue;
+}
+
+nav{
+    background-color: #59606d;
+}
+
+#footer{
+    background-color: #59606d;
+    color: white;
+}
+#footer a:link{
+   text-decoration: none;
+   color:lightblue ;
+}
+
+/*-------------------------------- Inicio footer ------------------------------*/
+
