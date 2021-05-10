@@ -6,7 +6,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>CadastrarProdutoServlet</servlet-name>
-        <url-pattern>/produtos/CadastrarProdutoServlet</url-pattern>
+        <url-pattern>/CadastrarProdutoServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

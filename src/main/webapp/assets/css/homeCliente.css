@@ -1,0 +1,42 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 09/05/2021, 18:19:17
+    Author     : monteiro
+*/
+
+.parallax4 {
+    background-image: url("../img/Safe Place (1).png");
+    min-height: 730px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+     background-color: #107faa;
+     
+   
+}
+
+#botao1{
+    background-color: #107faa;
+    border:none;
+    color: white;
+    height: 100px;
+    width: 400px;
+    font-size: xx-large
+    
+}
+#botao2{
+     background-color: #ff9b21;
+      border:none;
+      color: white;
+      height: 100px;
+      width: 400px;
+      font-size: xx-large
+}
+a:link{
+    text-decoration: none;
+    color: white;
+}

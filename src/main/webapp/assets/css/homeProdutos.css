@@ -1,0 +1,52 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 09/05/2021, 22:24:40
+    Author     : monteiro
+*/
+
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 09/05/2021, 18:19:17
+    Author     : monteiro
+*/
+
+.parallaxHomeProdutos {
+    background-image: url("../img/homeProdutos.png");
+    min-height: 730px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+ background-color: #c6f1e7;
+     
+   
+}
+
+#botao1{
+    background-color: #ff4133;
+    border:none;
+    color: white;
+    height: 100px;
+    width: 400px;
+    font-size: xx-large
+    
+}
+#botao2{
+     background-color: #c6f1e7;
+      border:none;
+      color: white;
+      height: 100px;
+      width: 400px;
+      font-size: xx-large
+}
+a:link{
+    text-decoration: none;
+    color: white;
+}

@@ -45,7 +45,7 @@ public class ProdutoDAO {
     }
     
     
-    public static List<Produto> getProduto(){
+    public static List<Produto> getProdutos(){
         List<Produto> produtos = new ArrayList<>();
         String query = "select * from produto";
         Connection con;
@@ -60,12 +60,72 @@ public class ProdutoDAO {
                 Date dataFabricacao = rs.getDate("data_fabricacao");
                 Date dataVencimento = rs.getDate("data_vencimento");
                 double preco = rs.getDouble("preco");
-                //Produto produto = new Produto(nome,dataFabricacao, dataVencimento, preco);
-                //produtos.add(produto);
+                Produto produto = new Produto(nome,dataFabricacao, dataVencimento, preco);
+                produtos.add(produto);
             }
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return produtos;
+    }
+    
+    public static Produto getProduto(String nome){
+        Produto produto = null;
+        String query = "select * from produto where nome=?";
+        Connection con;
+        
+        try {
+            con = DB.getConexao();
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, nome);
+            ResultSet rs = ps.executeQuery();
+        
+            if(rs.next()){
+                Date dataFabricacao = rs.getDate("data_fabricacao");
+                Date dataVencimento = rs.getDate("data_vencimento");
+                double preco = rs.getDouble("preco");
+                produto = new Produto(nome,dataFabricacao, dataVencimento, preco);         
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return produto;
+    }
+    
+    public static boolean deletar(String nome){
+        boolean ok = true;
+        String query = "delete from produto where nome=?";
+        Connection con;
+        
+        try {
+            con = DB.getConexao();
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, nome);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            ok = false;
+        }
+        return ok;
+    }
+    
+    public static boolean atualizar(Produto produto){
+        boolean ok = true;
+        String query = "update produto set nome=?, data_fabricacao=?, data_vencimento=?, preco=? where nome=?";
+        Connection con;
+        
+        try {
+            con = DB.getConexao();
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, produto.getNome());
+            ps.setDate(2, produto.getDataFabricacao());
+            ps.setDate(3, produto.getDataVencimento());
+            ps.setDouble(4, produto.getPreco());
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            ok = false;
+        }
+        return ok;
     }
 }
