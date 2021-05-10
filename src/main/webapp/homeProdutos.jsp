@@ -38,7 +38,7 @@
 
         <div class="col col-md-6 col-lg-3 border-0 d-flex justify-content-around">
             <div class="card border-0 mx-auto" style="width: 12rem;">
-                <button id="botao2" type="button" class="btn btn-outline-primary"><a href="" style="color: white">Lista de Produtos</a></button>
+                <button disabled="disabled" id="botao2" type="button" class="btn btn-outline-primary"><a href="" style="color: white" >Lista de Produtos</a></button>
             </div>
         </div>
 
