@@ -4,24 +4,34 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
+    Created on : 09/05/2021, 22:48:19
+    Author     : monteiro
+*/
+
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
     Created on : 09/05/2021, 20:11:47
     Author     : monteiro
 */
 
-.parallaxHomeVendas {
-    background-image: url("../img/homeVendas.png");
+.parallax5{
+    background-image: url("../img/homeRelatorio.jpg");
     min-height: 730px;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-        background-color: #3878d3;
-     background-size:contain;
+    background-color: #eaf3fa;
+    background-size:contain;
      
    
 }
 
 #botao1{
-    background-color: #3878d3;
+    background-color: #2d3a64;
     border:none;
     color: white;
     height: 100px;
@@ -30,7 +40,7 @@ and open the template in the editor.
     
 }
 #botao2{
-     background-color: #2d3a64;
+     background-color: #ff9b21;
       border:none;
       color: white;
       height: 100px;

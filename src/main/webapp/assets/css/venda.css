@@ -7,15 +7,14 @@ and open the template in the editor.
     Created on : 08/05/2021, 00:28:16
     Author     : monteiro
 */
-.parallax3 {
-    background-image: url("../img/5921.jpg");
-    min-height: 700px;
+.parallax3{
+    background-image: url("../img/homeVendas.png");
+    min-height: 730px;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-     background-color: #eaf3fa;
-     background-size: contain;
-     
-   
+    background-color: #3878d3;
+    background-size:contain;
+ 
 }
 

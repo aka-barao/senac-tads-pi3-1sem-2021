@@ -22,9 +22,10 @@
                 <img id="navLogo" style="max-width:100px; margin-top: -7px;"
                      src="assets/img/facebook_cover_photo_2.png">
             </a>
-            <a href="homeCliente.jsp">Cliente</a> 
-            <a href="cadastrarProduto.jsp">Produto</a> 
-               <a href="homeVenda.jsp">Venda</a> 
+            <a href="homeCliente.jsp">Clientes</a> 
+            <a href="homeProdutos.jsp">Produtos</a> 
+            <a href="homeVenda.jsp">Vendas</a> 
+            <a href="homeRelatorios.jsp">Relatórios</a> 
               
           
           <form class="d-flex">

@@ -114,15 +114,6 @@
             <input type="date" name="data_nascimento" required="true" class="form-control" required/><br/><br/>
         </div>
       </div>
-           
-           
-           
-           
-           
-            
-            
-            
-          
             
             <button type="submit" class="btn btn-primary">Cadastrar</button> 
         </form>

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : homeVenda
-    Created on : 09/05/2021, 20:10:59
+    Document   : homeProdutos
+    Created on : 09/05/2021, 22:24:56
     Author     : monteiro
 --%>
 
@@ -13,7 +13,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         
         <title>Esperaça</title>
-        <link rel="stylesheet" href="assets/css/homeVendas.css"/>
+        <link rel="stylesheet" href="assets/css/homeProdutos.css"/>
         <!-- CSS only -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
         <link rel="icon" type="imagem/png" href="assets/img/pinterest_profile_image.png" />
@@ -21,7 +21,7 @@
     <body>
         <c:import url="nav.jsp"/>
      
-       <div class="parallaxHomeVendas"></div>
+       <div class="parallaxHomeProdutos"></div>
        <div  class="container-ls m-5">
     <div class="row">
         <div class="col col-md-6 col-lg-3 d-flex justify-content-around">
@@ -32,13 +32,13 @@
 
         <div class="col col-md-6 col-lg-3 border-0 d-flex justify-content-around">
             <div class="card border-0 mx-auto" style="width: 12rem;">
-                <button id="botao1" type="button" class="btn btn-outline-primary"><a href="" style="color: white">Venda</a></button>
+                <button id="botao1" type="button" class="btn btn-outline-primary"><a href="cadastrarProduto.jsp" style="color: white">Cadastrar Produtos</a></button>
             </div>
         </div>
 
         <div class="col col-md-6 col-lg-3 border-0 d-flex justify-content-around">
             <div class="card border-0 mx-auto" style="width: 12rem;">
-                <button id="botao2" type="button" class="btn btn-outline-primary"><a href="relatorioVenda.jsp" style="color: white">Relatório de Vendas</a></button>
+                <button id="botao2" type="button" class="btn btn-outline-primary"><a href="" style="color: white">Lista de Produtos</a></button>
             </div>
         </div>
 
