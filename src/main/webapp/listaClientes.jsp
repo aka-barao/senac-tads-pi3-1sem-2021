@@ -1,7 +1,7 @@
 <%-- 
-    Document   : listaClientes
-    Created on : 27/04/2021, 16:23:02
-    Author     : Dell i5
+    Document   : listarCliente
+    Created on : 09/05/2021, 18:07:22
+    Author     : monteiro
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -11,6 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Lista de Clientes</title>
+        <link rel="stylesheet" href="assets/css/listarCliente.css"/>
 
         <script type="text/javascript">
             function mostraTelaConfirmacao(nome, cpf) {
@@ -43,11 +44,15 @@
             }
         </script>
     </head>
-    <body class="container">
-        <c:import url="header.jsp"/>
-        <h1>Clientes:</h1>
+    <body>
+        <c:import url="nav.jsp"/>
+        
+<div class="parallax6"></div>
+<div class="container" >
+     
+    <h1>Clientes:</h1>
 
-        <div class="alert alert-danger" role="alert" id="alerta" style="display: nome">
+        <div class="alert alert-danger" role="alert" id="alerta" style="display: none">
             Erro ao excluir cliente!
         </div>
         
@@ -72,22 +77,16 @@
             <c:forEach items="${listaClientes}" var="cliente">
                 <tr>
                     <td>${cliente.nome}</td>
-                    <td>${cliente.sobrenome}</td>
                     <td>${cliente.rg}</td>
                     <td>${cliente.cpf}</td>
                     <td>${cliente.cep}</td>
-                    <td>${cliente.cidade}</td>
-                    <td>${cliente.bairro}</td>
-                    <td>${cliente.complemento}</td>
                     <td>${cliente.endereco}</td>
-                    <td>${cliente.numero}</td>
                     <td>${cliente.telefone}</td>
                     <td>${cliente.celular}</td>
                     <td>${cliente.email}</td>
-                    <td>${cliente.genero}</td>
                     <td>${cliente.estado_civil}</td>
                     <td>${cliente.data_nascimento}</td>
-                    <td><a href="AlterarClienteServelet?=cpf=${cliente.cpf}">Alterar</a></td>
+                    <td><a href="AlterarClienteServelet?cpf=${cliente.cpf}">Alterar</a></td>
 
                     <td><button type="button" class="btn btn-link" onclick="mostrarTelaConfirmacao('${cliente.nome}', '${cliente.cpf}')">Excluir</button></td>
                 </tr>        
@@ -114,7 +113,7 @@
                 </div>
             </div>
         </div>
-
+    </div>
 
         <c:import url="footer.jsp"/>
     </body>

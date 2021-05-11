@@ -28,7 +28,7 @@
         
                 
   <c:if test="${empty cliente}">
-        <form action="CadastrarClienteServelet.java" method="POST">
+        <form action="CadastrarClienteServelet" method="POST">
             
       <div class="row">
         <div class="col-md-3">
@@ -69,16 +69,11 @@
       <div class="row">
         <div class="col-md-3">
         <label class="form-label">Telefone</label>
-        <input type="tel" name="telefone" required="true" class="form-control" required/><br/><br/>
+        <input type="number" name="telefone" required="true" class="form-control" required/><br/><br/>
         </div>
       </div>
             
-      <div class="row">
-        <div class="col-md-3">
-        <label class="form-label">Telefone</label>
-        <input type="text" name="telefone" required="true" class="form-control" required/><br/><br/>
-        </div>
-      </div>
+     
             
       <div class="row">
         <div class="col-md-3">
@@ -130,7 +125,7 @@
             <label>Cep</label>
             <input type="text" name="cep" required="true" value="${cliente.cep}"/><br/><br/>
             <label>Endereço</label>
-            <input type="text" name="endereco" required="true" value="${cliente.endereço}"/><br/><br/>
+            <input type="text" name="endereco" required="true" value="${cliente.endereco}"/><br/><br/>
             <label>Telefone</label>
             <input type="text" name="telefone" required="true" value="${cliente.telefone}"/><br/><br/>
             <label>Celular</label>

@@ -8,6 +8,38 @@
         <servlet-name>CadastrarProdutoServlet</servlet-name>
         <url-pattern>/CadastrarProdutoServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ListaClienteServlet</servlet-name>
+        <servlet-class>servlet.cliente.ListaClienteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CadastrarClienteServelet</servlet-name>
+        <servlet-class>servlet.cliente.CadastrarClienteServelet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ExcluirClienteServelet</servlet-name>
+        <servlet-class>servlet.cliente.ExcluirClienteServelet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AlterarClienteServelet</servlet-name>
+        <servlet-class>servlet.cliente.AlterarClienteServelet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListaClienteServlet</servlet-name>
+        <url-pattern>/ListaClienteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CadastrarClienteServelet</servlet-name>
+        <url-pattern>/CadastrarClienteServelet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExcluirClienteServelet</servlet-name>
+        <url-pattern>/ExcluirClienteServelet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlterarClienteServelet</servlet-name>
+        <url-pattern>/AlterarClienteServelet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

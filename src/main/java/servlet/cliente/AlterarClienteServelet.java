@@ -1,5 +1,5 @@
 
-package servlet;
+package servlet.cliente;
 
 import br.senac.sp.utils.Redirect;
 import dao.ClienteDao;
@@ -29,7 +29,7 @@ public class AlterarClienteServelet extends HttpServlet {
         }
         request.setAttribute("cliente", cliente);
         
-        request.getRequestDispatcher("/clientes/cadastrar.jsp").forward(request, response);
+        request.getRequestDispatcher("/cadastrarCliente.jsp").forward(request, response);
     }
 
     @Override

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servlet;
+package servlet.cliente;
 
 import dao.ClienteDao;
 import entidade.Cliente;
@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Dell i5
  */
-public class ClienteServlet extends HttpServlet {
+public class ListaClienteServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -30,7 +31,7 @@ public class ClienteServlet extends HttpServlet {
         try {
             listaClientes = ClienteDao.getClientes();
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ListaClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         request.setAttribute("listaClientes", listaClientes);

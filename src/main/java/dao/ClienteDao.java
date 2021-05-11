@@ -43,7 +43,7 @@ public class ClienteDao {
             comando.setInt(7, cliente.getCelular());
             comando.setString(8, cliente.getEmail());
             comando.setString(9, cliente.getEstado_civil());
-            comando.setDate(10, (Date) cliente.getData_nascimento());
+            comando.setDate(10, cliente.getData_nascimento());
 
             comando.executeUpdate();
         }catch (SQLException ex){
@@ -161,7 +161,7 @@ public class ClienteDao {
             comando.setInt(7, cliente.getCelular());
             comando.setString(8, cliente.getEmail());
             comando.setString(9, cliente.getEstado_civil());
-            comando.setDate(10, (Date) cliente.getData_nascimento());
+            comando.setDate(10, cliente.getData_nascimento());
 
             comando.executeUpdate();
         } catch (SQLException ex) {

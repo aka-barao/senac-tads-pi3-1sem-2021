@@ -16,7 +16,7 @@
         <c:import url="header.jsp"/>
         
         <c:if test="${empty cliente}">
-        <form action="CadastrarClienteServelet.java" method="POST">
+        <form action="CadastrarClienteServelet" method="POST">
             <label class="form-label">Nome</label>
             <input type="text" name="nome" required="true" class="form-control" required/><br/><br/>
             <label class="form-label">RG</label>
