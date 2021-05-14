@@ -9,6 +9,34 @@
         <url-pattern>/CadastrarProdutoServlet</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>AtualizarProdutoServlet</servlet-name>
+        <servlet-class>servlet.AtualizarProdutoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListarProdutoServlet</servlet-name>
+        <servlet-class>servlet.ListarProdutoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RemoverProdutoServlet</servlet-name>
+        <servlet-class>servlet.RemoverProdutoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CadastrarProdutoServlet</servlet-name>
+        <url-pattern>/CadastrarProdutoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AtualizarProdutoServlet</servlet-name>
+        <url-pattern>/AtualizarProdutoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarProdutoServlet</servlet-name>
+        <url-pattern>/ListarProdutoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RemoverProdutoServlet</servlet-name>
+        <url-pattern>/RemoverProdutoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>ListaClienteServlet</servlet-name>
         <servlet-class>servlet.cliente.ListaClienteServlet</servlet-class>
     </servlet>

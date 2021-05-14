@@ -8,6 +8,7 @@ package servlet;
 import dao.ProdutoDAO;
 import entidade.Produto;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,9 +19,20 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Beto
  */
-public class CadastrarProdutoServlet extends HttpServlet {
+public class AtualizarProdutoServlet extends HttpServlet {
 
     
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        String nome = request.getParameter("nome");
+        Produto produto = ProdutoDAO.getProduto(nome);
+        request.setAttribute("produto", produto);
+        
+        request.getRequestDispatcher("/cadastrarProduto.jsp").forward(request, response);
+    }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -34,15 +46,15 @@ public class CadastrarProdutoServlet extends HttpServlet {
         Date datev = Date.valueOf(dataVencimento);
         double preco = Double.valueOf(precoS);
         
-        
-        Produto produto = new Produto(1,nome, datef, datev, preco);
-        boolean ok = ProdutoDAO.cadastrar(produto);
+        Produto produto = new Produto(1, nome, datef, datev, preco);
+        boolean ok = ProdutoDAO.atualizar(produto);
         
         if(ok){
-            response.sendRedirect(request.getContextPath() + "/sucesso.jsp");
+            response.sendRedirect("/sucesso.jsp");
         }else{
-            response.sendRedirect(request.getContextPath() + "/erro.jsp");
+            response.sendRedirect("/erro.jsp");
         }
     }
+
 
 }

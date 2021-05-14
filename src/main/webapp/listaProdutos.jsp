@@ -16,6 +16,7 @@
         <h1>Produtos:</h1>
         
         <table>
+            <th>ID</th>
             <th>Nome</th>
             <th>Data de Fabricação</th>
             <th>Data de Vencimento</th>
@@ -23,6 +24,7 @@
             
             <c:forEach items="${listaProdutos}" var="produto">
                 <tr>
+                    <td>${produto.id}</td>
                     <td>${produto.nome}</td>
                     <td>${produto.dataFabricacao}</td>
                     <td>${produto.dataVencimento}</td>
