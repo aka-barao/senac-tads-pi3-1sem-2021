@@ -5,6 +5,7 @@ import java.sql.Date;
 
 public class Cliente {
     
+    private int id;
     private String nome;
     private int rg;
     private int cpf;
@@ -15,6 +16,7 @@ public class Cliente {
     private String email;
     private String estado_civil;
     private Date data_nascimento;
+    
 
     public Cliente(String nome, int rg, int cpf, int cep, String endereco, int telefone, int celular, String email, String estado_civil, Date data_nascimento) {
         this.nome = nome;
@@ -29,6 +31,14 @@ public class Cliente {
         this.data_nascimento = data_nascimento;
     }
 
+       public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getNome() {
         return nome;
     }

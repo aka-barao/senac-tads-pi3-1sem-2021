@@ -12,6 +12,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Lista de Clientes</title>
         <link rel="stylesheet" href="assets/css/listarCliente.css"/>
+        
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+                crossorigin="anonymous"></script>
 
         <script type="text/javascript">
             function mostraTelaConfirmacao(nome, cpf) {
@@ -20,7 +24,7 @@
                 $("#cpfCliente").val(cpf);
 
                 var modalConfirmacao = $("#modalConfirmacao");
-                myModal.show();
+                modalConfirmacao.show();
             }
 
             function fecharTelaConfirmacao() {
@@ -34,11 +38,11 @@
                          location.reload();
                       })
                       .fail(function () {
-                         console.log("error");
-                            $("#alerta").css("display", "block");
-                            setTimeout(function() {
-                               $("#alerta").css("display", "none"); 
-                            }),1000);
+                        console.log("error");
+						$("#alerta").css("display", "block");
+						setTimeout(function() {
+						   $("#alerta").css("display", "none"); 
+						}, 1000);
                       });
                       
             }
@@ -58,19 +62,13 @@
         
         <table class="table">
             <th>Nome</th>
-            <th>Sobrenome</th>
             <th>RG</th>
             <th>CPF</th>
             <th>CEP</th>
-            <th>Cidade</th>
-            <th>Bairro</th>
-            <th>Complemento</th>
             <th>Endereço</th>
-            <th>número</th>
             <th>Telefone</th>
             <th>Celular</th>
             <th>Email</th>
-            <th>Genero</th>
             <th>Estado Civil</th>
             <th>Data Nascimento</th>
 
@@ -88,14 +86,14 @@
                     <td>${cliente.data_nascimento}</td>
                     <td><a href="AlterarClienteServelet?cpf=${cliente.cpf}">Alterar</a></td>
 
-                    <td><button type="button" class="btn btn-link" onclick="mostrarTelaConfirmacao('${cliente.nome}', '${cliente.cpf}')">Excluir</button></td>
+                    <td><button type="button" class="btn btn-link" onclick="mostraTelaConfirmacao('${cliente.nome}', '${cliente.cpf}')">Excluir</button></td>
                 </tr>        
             </c:forEach>
         </table>
 
 
         <!-- Modal -->
-        <div class="modal " id="modalConfirmacao" >
+        <div class="modal" id="modalConfirmacao" >
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">

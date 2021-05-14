@@ -128,9 +128,10 @@ public class ClienteDao {
                 String email = dados.getString("email");
                 String estado_civil = dados.getString("estado_civil");
                 Date data_nascimento = dados.getDate("data_nascimento");
+                int id = dados.getInt("id_cliente");
                 
                 cliente = new Cliente(nome, rg, cpf, cep, endereco, telefone, celular, email, estado_civil, data_nascimento);
-                
+                cliente.setId(id);
                 
             }
         } catch (SQLException ex) {
@@ -162,6 +163,7 @@ public class ClienteDao {
             comando.setString(8, cliente.getEmail());
             comando.setString(9, cliente.getEstado_civil());
             comando.setDate(10, cliente.getData_nascimento());
+            comando.setInt(11, cliente.getId());
 
             comando.executeUpdate();
         } catch (SQLException ex) {

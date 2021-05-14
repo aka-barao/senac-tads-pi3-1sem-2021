@@ -11,7 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         
-        <title>Esperaça</title>
+        <title>Esperança</title>
         <link rel="stylesheet" href="assets/css/cadastrarCliente.css"/>
         <!-- CSS only -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
@@ -92,12 +92,12 @@
       <div class="row">
          <div class="col-md-3">
     <label for="inputState" class="form-label">Estado Civil</label>
-    <select id="inputState" class="form-select">
+    <select id="inputState" class="form-select" name="estado_civil">
       <option selected>Selecione</option>
-      <option>Solteiro(a)</option>
-      <option>Casado(a)</option>
-      <option>Viuvo(a)</option>
-      <option>Divorciado(a)</option>
+      <option value="solteiro">Solteiro(a)</option>
+      <option value="casado">Casado(a)</option>
+      <option value="viuvo">Viuvo(a)</option>
+      <option value="divorciado">Divorciado(a)</option>
     </select>
   </div>
       </div>
@@ -115,6 +115,8 @@
         </c:if>
         <c:if test="${not empty cliente}">
         <form action="AlterarClienteServelet" method="POST">
+            
+            
             <label>Nome</label>
             <input type="text" name="nome" required="true" value="${cliente.nome}"/><br/><br/>
             
@@ -132,8 +134,25 @@
             <input type="text" name="celular" required="true" value="${cliente.celular}"/><br/><br/>
             <label>Email</label>
             <input type="text" name="email" required="true" value="${cliente.email}"/><br/><br/>
-            <label>Estado Civil</label>
-            <input type="text" name="estado_civil" required="true" value="${cliente.estado_civil}"/><br/><br/>
+            
+            
+              <div class="row">
+         <div class="col-md-3">
+     
+    <label for="inputState" class="form-label">Estado Civil</label>
+    <select id="inputState" class="form-select" required="true"  name="estado_civil" >
+      <option>Selecione</option>
+      <option <c:if test="${cliente.estado_civil == 'solteiro'}">selected</c:if> value="solteiro">Solteiro(a)</option>
+      <option <c:if test="${cliente.estado_civil == 'casado'}">selected</c:if> value="casado">Casado(a)</option>
+      <option <c:if test="${cliente.estado_civil == 'viuvo'}">selected</c:if> value="viuvo">Viuvo(a)</option>
+      <option <c:if test="${cliente.estado_civil == 'divorciado'}">selected</c:if> value="divorciado">Divorciado(a)</option>
+    </select>
+  </div>
+      </div>
+            <br>    <br> 
+            
+                
+                
             <label>Data_nascimento</label>
             <input type="date" name="data_nascimento" required="true" value="${cliente.data_nascimento}"/><br/><br/>
             

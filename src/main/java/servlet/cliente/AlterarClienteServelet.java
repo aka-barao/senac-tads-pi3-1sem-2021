@@ -6,6 +6,8 @@ import dao.ClienteDao;
 import entidade.Cliente;
 import java.io.IOException;
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -29,7 +31,7 @@ public class AlterarClienteServelet extends HttpServlet {
         }
         request.setAttribute("cliente", cliente);
         
-        request.getRequestDispatcher("/cadastrarCliente.jsp").forward(request, response);
+        request.getRequestDispatcher("cadastrarCliente.jsp").forward(request, response);
     }
 
     @Override
@@ -44,16 +46,43 @@ public class AlterarClienteServelet extends HttpServlet {
         int celular = Integer.valueOf(request.getParameter("cpf"));
         String email = request.getParameter("email");
         String estado_civil = request.getParameter("estado_civil");
-        Date data_nascimento = Date.valueOf(request.getParameter("data_nascimento"));
         
-        Cliente cliente = new Cliente(nome, rg, cpf, cep, endereco, telefone, celular, email, estado_civil, data_nascimento);
+        String dataRecebida = request.getParameter("data_nascimento");
+
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate dataEmLocalDate = LocalDate.parse(dataRecebida, formato);
+        
+        Date data_nascimento = Date.valueOf(dataEmLocalDate);
+        
         boolean ok = false;
         try {
-            ok = ClienteDao.atualizar(cliente);
+             Cliente cliente = ClienteDao.getClientes(String.valueOf(cpf));
+             
+             cliente.setNome(nome);
+             cliente.setRg(rg);
+             cliente.setCpf(cpf);
+             cliente.setCep(cep);
+             cliente.setEndereco(endereco);
+             cliente.setTelefone(telefone);
+             cliente.setCelular(celular);
+             cliente.setEmail(email);
+             cliente.setEstado_civil(estado_civil);
+             cliente.setData_nascimento(data_nascimento);
+             
+             ok = ClienteDao.atualizar(cliente);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(AlterarClienteServelet.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
-        Redirect.sendRedirect(ok, response);
+        
+        if (ok) {
+            response.sendRedirect(request.getContextPath() + "/sucesso.jsp");
+        } else {
+            String msg = "Não foi possível atualizar o cliente!";
+            request.setAttribute("msgErro", msg);
+            request.getRequestDispatcher( "/erro.jsp").forward(request, response);
+        }
+        
     }
     
 

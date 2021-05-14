@@ -13,5 +13,7 @@
     </head>
     <body>
         <h1>Operação Realizada com Sucesso!</h1>
+        
+        <c:import url="footer.jsp"/>
     </body>
 </html>
