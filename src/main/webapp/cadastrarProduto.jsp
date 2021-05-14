@@ -69,7 +69,7 @@
    </div>
             <br><br>
             
-            <button id="botaoCadastrar" type="submit" class="btn btn-outline-primary"><a href="relatorioVenda.jsp" style="color: white">Cadastrar</a></button>
+            <button id="botaoCadastrar" type="submit" class="btn btn-outline-primary">Cadastrar</button>
         </form>
              </div>
         
