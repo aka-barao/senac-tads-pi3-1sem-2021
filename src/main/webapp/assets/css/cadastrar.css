@@ -8,15 +8,7 @@ and open the template in the editor.
     Author     : monteiro
 */
 
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 07/05/2021, 23:03:14
-    Author     : monteiro
-*/
+
 body{
     background-color: #c6f1e7;
 }
@@ -53,6 +45,24 @@ nav{
    text-decoration: none;
    color:lightblue ;
 }
-
+.parallaxProd{
+    background-image: url("../img/FundoCadastrarpProd.jpg");
+    min-height: 330px;
+    background-attachment: fixed;
+    background-position: center;
+   
+    background-color: #eaf3fa;
+    background-size:contain;
+     
+   
+}
+#botaoCadastrar{
+    background-color: #59606d;
+    color: white;
+    border: none;
+}
+#botaoCadastrar a:link{
+   text-decoration: none;
+}
 /*-------------------------------- Inicio footer ------------------------------*/
 
