@@ -26,9 +26,9 @@ public class AtualizarProdutoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String idStr = request.getParameter("id");
-        int id = Integer.parseInt(idStr);
-        Produto produto = ProdutoDAO.getProduto(id);
+        //Esta indo vazio para o cadastra.jsp
+        String nome = request.getParameter("nome");
+        Produto produto = ProdutoDAO.getProduto(nome);
         request.setAttribute("produto", produto);
         
         request.getRequestDispatcher("/cadastrarProduto.jsp").forward(request, response);

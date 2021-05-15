@@ -29,9 +29,8 @@
                 crossorigin="anonymous"></script>
 
         <script type="text/javascript">
-            function mostraTelaConfirmacao(nome, id) {
-                console.log("nome", nome);
-                $("#idProduto").html(nome);
+            function mostraTelaConfirmacao()) {
+                console.log("id", id);
                 $("#idProduto").val(id);
 
                 var modalConfirmacao = $("#modalConfirmacao");
@@ -45,6 +44,7 @@
             function deletarProduto() {
                 var id = $("#idProduto").val();
                 fecharTelaConfirmacao();
+                console.log("id", id);
                   $.ajax("RemoverProdutoServelet?id=" + id).done(function () {
                          location.reload();
                       })
@@ -87,8 +87,8 @@
                     <td><%=registro.getPreco()%></td>
                     
                     
-                    <td><button id="botao1" type="button" class="btn btn-outline-primary"><a href="AtualizarProdutoServlet?nome=${registro.nome}">Alterar</a></button></td>
-                    <td><button type="button" class="btn btn-link" onclick="mostraTelaConfirmacao('${registro.nome}', '${registro.id}')">Excluir</button></td>
+                    <td><button id="botao1" type="button" class="btn btn-outline-primary"><a href="AtualizarProdutoServlet?id=${registro.id}">Alterar</a></button></td>
+                    <td><button type="button" class="btn btn-link" onclick="mostraTelaConfirmacao('${registro.getId()}')">Excluir</button></td>
                     
                 </tr>
             
@@ -106,7 +106,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                  <p>Confirmar exclusão do Produto<label id="idProduto"></label>? </p>
+                  <p>Confirmar exclusão do Produto<label id="nomeProduto"></label>? </p>
                   <input type="hidden" id="idProduto"/>
               </div>
               <div class="modal-footer">

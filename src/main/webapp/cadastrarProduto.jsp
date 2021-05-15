@@ -76,7 +76,7 @@
 
                 <br><br><br>
         </c:if>
-         
+        
         <c:if test="${not empty produto}">
             <div class="parallaxProd"></div>
                 <div class="container">
