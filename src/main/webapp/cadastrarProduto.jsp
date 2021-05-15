@@ -20,60 +20,121 @@
     <body>
         <c:import url="nav.jsp"/>
         
-         <div class="parallaxProd"></div>
-        <div class="container">
-            <br><br>
-            <h1>Cadastrar Produto:</h1>
-            <br><br>
-        
-        <form action="CadastrarProdutoServlet" method="POST">
+        <c:if test="${empty produto}">
+            <div class="parallaxProd"></div>
+                <div class="container">
+                    <br><br>
+                    <h1>Cadastrar Produto:</h1>
+                    <br><br>
+
+                <form action="CadastrarProdutoServlet" method="POST">
+                    <div class="row">
+                <div class="col-md-5">
+                <div class="input-group mb-3">
+                <span class="input-group-text">Nome</span>
+                <input type="text" class="form-control" name="nome" required="true" >
+
+                </div>
+                </div>
+           </div>
+
+
+             <div class="row">
+                <div class="col-md-5">
+                <div class="input-group mb-3">
+                <span class="input-group-text">Data Fabricação</span>
+                <input type="date" class="form-control" name="data_fabricacao" required="true" >
+
+                </div>
+                </div>
+           </div>      
+
             <div class="row">
-        <div class="col-md-5">
-        <div class="input-group mb-3">
-        <span class="input-group-text">Nome</span>
-        <input type="text" class="form-control" name="nome" required="true" >
+                <div class="col-md-5">
+                <div class="input-group mb-3">
+                <span class="input-group-text">Data Vencimento</span>
+                <input type="date" class="form-control" name="data_vencimento" required="true" >
+
+                </div>
+                </div>
+           </div>  
+
+           <div class="row">
+                <div class="col-md-5">
+                <div class="input-group mb-3">
+                <span class="input-group-text">Preço $</span>
+                <input type="text" class="form-control" name="preco" required="true" >
+                <span class="input-group-text">.00</span>
+                </div>
+                </div>
+           </div>
+                <br><br>
+
+                <button id="botaoCadastrar" type="submit" class="btn btn-outline-primary">Cadastrar</button>
+                </form>
+            </div>
+
+                <br><br><br>
+        </c:if>
+         
+        <c:if test="${not empty produto}">
+            <div class="parallaxProd"></div>
+                <div class="container">
+                    <br><br>
+                    <h1>Atualizar Produto:</h1>
+                    <br><br>
+
+                <form action="AtualizarProdutoServlet" method="POST">
+                    <div class="row">
+                <div class="col-md-5">
+                <div class="input-group mb-3">
+                <span class="input-group-text">Nome</span>
+                <input type="text" class="form-control" name="nome" required="true" value="${produto.nome}" >
+
+                </div>
+                </div>
+           </div>
+
+
+             <div class="row">
+                <div class="col-md-5">
+                <div class="input-group mb-3">
+                <span class="input-group-text">Data Fabricação</span>
+                <input type="date" class="form-control" name="data_fabricacao" required="true" value="${produto.dataFabricacao}">
+
+                </div>
+                </div>
+           </div>      
+
+            <div class="row">
+                <div class="col-md-5">
+                <div class="input-group mb-3">
+                <span class="input-group-text">Data Vencimento</span>
+                <input type="date" class="form-control" name="data_vencimento" required="true" value="${produto.dataVencimento}">
+
+                </div>
+                </div>
+           </div>  
+
+           <div class="row">
+                <div class="col-md-5">
+                <div class="input-group mb-3">
+                <span class="input-group-text">Preço $</span>
+                <input type="text" class="form-control" name="preco" required="true" value="${produto.preco}">
+                <span class="input-group-text">.00</span>
+                </div>
+                </div>
+           </div>
+                <br><br>
+
+                <button id="botaoCadastrar" type="submit" class="btn btn-outline-primary">Atualizar</button>
+                </form>
+            </div>
+
+                <br><br><br>   
+        </c:if>
+              
         
-        </div>
-        </div>
-   </div>
-            
-            
-     <div class="row">
-        <div class="col-md-5">
-        <div class="input-group mb-3">
-        <span class="input-group-text">Data Fabricação</span>
-        <input type="date" class="form-control" name="data_fabricacao" required="true" >
-        
-        </div>
-        </div>
-   </div>      
-            
-    <div class="row">
-        <div class="col-md-5">
-        <div class="input-group mb-3">
-        <span class="input-group-text">Data Vencimento</span>
-        <input type="date" class="form-control" name="data_vencimento" required="true" >
-        
-        </div>
-        </div>
-   </div>  
-            
-   <div class="row">
-        <div class="col-md-5">
-        <div class="input-group mb-3">
-        <span class="input-group-text">Preço $</span>
-        <input type="text" class="form-control" name="preco" required="true" >
-        <span class="input-group-text">.00</span>
-        </div>
-        </div>
-   </div>
-            <br><br>
-            
-            <button id="botaoCadastrar" type="submit" class="btn btn-outline-primary">Cadastrar</button>
-        </form>
-             </div>
-        
-        <br><br><br>
         
         
         <c:import url="footer.jsp"/>

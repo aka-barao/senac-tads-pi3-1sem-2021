@@ -23,8 +23,10 @@ public class RemoverProdutoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String nome = request.getParameter("nome");
-        boolean ok = ProdutoDAO.deletar(nome);
+        String idStr = request.getParameter("id");
+        int id = Integer.parseInt(idStr);
+        
+        boolean ok = ProdutoDAO.deletar(id);
         
         if(ok){
             response.sendRedirect("/sucesso.jsp");
