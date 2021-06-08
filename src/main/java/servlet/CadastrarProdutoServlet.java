@@ -44,7 +44,7 @@ public class CadastrarProdutoServlet extends HttpServlet {
         double preco = Double.valueOf(precoS);
         
         
-        Produto produto = new Produto(nome, datef, datev, preco);
+        Produto produto = new Produto(1,nome, datef, datev, preco);
         boolean ok = ProdutoDAO.cadastrar(produto);
         
         if(ok){

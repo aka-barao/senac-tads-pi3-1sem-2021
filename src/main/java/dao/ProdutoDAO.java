@@ -46,7 +46,7 @@ public class ProdutoDAO {
     
     
     public static List<Produto> getProdutos(){
-        List<Produto> produtos = new ArrayList<>();
+        List<Produto> produtos = new ArrayList();
         String query = "select * from produto";
         Connection con;
         
@@ -56,11 +56,12 @@ public class ProdutoDAO {
             ResultSet rs = ps.executeQuery();
         
             while(rs.next()){
+                int id = rs.getInt("id_produto");
                 String nome = rs.getString("nome");
                 Date dataFabricacao = rs.getDate("data_fabricacao");
                 Date dataVencimento = rs.getDate("data_vencimento");
                 double preco = rs.getDouble("preco");
-                Produto produto = new Produto(nome,dataFabricacao, dataVencimento, preco);
+                Produto produto = new Produto(id,nome,dataFabricacao, dataVencimento, preco);
                 produtos.add(produto);
             }
         } catch (SQLException ex) {
@@ -81,10 +82,11 @@ public class ProdutoDAO {
             ResultSet rs = ps.executeQuery();
         
             if(rs.next()){
+                int id = rs.getInt("id_produto");
                 Date dataFabricacao = rs.getDate("data_fabricacao");
                 Date dataVencimento = rs.getDate("data_vencimento");
                 double preco = rs.getDouble("preco");
-                produto = new Produto(nome,dataFabricacao, dataVencimento, preco);         
+                produto = new Produto(id, nome,dataFabricacao, dataVencimento, preco);         
             }
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -92,15 +94,15 @@ public class ProdutoDAO {
         return produto;
     }
     
-    public static boolean deletar(String nome){
+    public static boolean deletar(int id){
         boolean ok = true;
-        String query = "delete from produto where nome=?";
+        String query = "delete from produto where id_produto=?";
         Connection con;
         
         try {
             con = DB.getConexao();
             PreparedStatement ps = con.prepareStatement(query);
-            ps.setString(1, nome);
+            ps.setInt(1, id);
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -121,6 +123,7 @@ public class ProdutoDAO {
             ps.setDate(2, produto.getDataFabricacao());
             ps.setDate(3, produto.getDataVencimento());
             ps.setDouble(4, produto.getPreco());
+            ps.setString(5, produto.getNome());
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);

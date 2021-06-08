@@ -25,8 +25,6 @@
             <h2 >Cadastrar Cliente</h2>
             <br>
 
-
-
             <c:if test="${empty cliente}">
                 <form action="CadastrarClienteServelet" method="POST">
 
@@ -48,14 +46,14 @@
                     <div class="row">
                         <div class="col-md-3">
                             <label class="form-label">CPF</label>
-                            <input type="text" name="cpf" required="true" class="form-control" required/><br/><br/>
+                            <input type="number" name="cpf" required="true" class="form-control" required/><br/><br/>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-3">
                             <label class="form-label">Cep</label>
-                            <input type="text" name="cep" required="true" class="form-control" required/><br/><br/>
+                            <input type="text" name="cep" maxlength="8" required="true" class="form-control" required/><br/><br/>
                         </div>
                     </div>
 
@@ -69,7 +67,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <label class="form-label">Telefone</label>
-                            <input type="number" name="telefone" required="true" class="form-control" required/><br/><br/>
+                            <input type="number" name="telefone"  maxlength="8" required="true" class="form-control" required/><br/><br/>
                         </div>
                     </div>
 
@@ -78,7 +76,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <label class="form-label">Celular</label>
-                            <input type="tel" name="celular" required="true" class="form-control" required/><br/><br/>
+                            <input type="tel" name="celular"  maxlength="8" required="true" class="form-control" required/><br/><br/>
                         </div>
                     </div>
 
@@ -125,7 +123,7 @@
                     <label>CPF</label>
                     <input type="text" name="cpf" required="true" value="${cliente.cpf}" readonly="true"/><br/><br/>
                     <label>Cep</label>
-                    <input type="text" name="cep" required="true" value="${cliente.cep}"/><br/><br/>
+                    <input type="number" name="cep" required="true" value="${cliente.cep}"/><br/><br/>
                     <label>Endereço</label>
                     <input type="text" name="endereco" required="true" value="${cliente.endereco}"/><br/><br/>
                     <label>Telefone</label>

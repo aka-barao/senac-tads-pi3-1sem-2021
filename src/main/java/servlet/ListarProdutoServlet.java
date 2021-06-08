@@ -21,7 +21,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Beto
  */
-public class ProdutoServlet extends HttpServlet {
+public class ListarProdutoServlet extends HttpServlet {
+
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -35,11 +36,11 @@ public class ProdutoServlet extends HttpServlet {
         }
         
         List<Produto> listaProdutos = ProdutoDAO.getProdutos();
-        request.setAttribute("listaProduto", listaProdutos);
+        request.setAttribute("listaProdutos", listaProdutos);
         
         request.getRequestDispatcher("/listaProdutos.jsp").forward(request, response);
-        
     }
 
     
+
 }

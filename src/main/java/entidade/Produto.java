@@ -15,18 +15,28 @@ import java.sql.Date;
  */
 
 public class Produto {
+    private final int id;
     private String nome;
     private Date dataFabricacao;
     private Date dataVencimento;
     private double preco;
 
-    public Produto(String nome, Date dataFabricacao, Date dataVencimento, double preco) {
+    public Produto(int id, String nome, Date dataFabricacao, Date dataVencimento, double preco) {
+        this.id = id;
         this.nome = nome;
         this.dataFabricacao = dataFabricacao;
         this.dataVencimento = dataVencimento;
         this.preco = preco;
     }
 
+    public Produto(String nome, Date datef, Date datev, double preco) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public int getId(){
+        return id;
+    }
+    
     public String getNome() {
         return nome;
     }
@@ -59,6 +69,4 @@ public class Produto {
         this.preco = preco;
     }
     
-    
-
 }

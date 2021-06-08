@@ -6,10 +6,8 @@
 package servlet;
 
 import dao.ProdutoDAO;
-import entidade.Produto;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
 import java.util.Objects;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,7 +19,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Beto
  */
-public class AlterarProdutoServlet extends HttpServlet {
+public class RemoverProdutoServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -34,28 +32,10 @@ public class AlterarProdutoServlet extends HttpServlet {
             return;
         }
         
-        String nome = request.getParameter("nome");
-        Produto produto = ProdutoDAO.getProduto(nome);
-        request.setAttribute("produto", produto);
+        String idStr = request.getParameter("id");
+        int id = Integer.parseInt(idStr);
         
-        request.getRequestDispatcher("/produtos/cadastrar.jsp").forward(request, response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-        String nome = request.getParameter("nome");
-        String dataFabricacao = request.getParameter("data_fabricacao");
-        String dataVencimento = request.getParameter("data_vencimento");
-        String precoS = request.getParameter("preco");
-        
-        Date datef = Date.valueOf(dataFabricacao);
-        Date datev = Date.valueOf(dataVencimento);
-        double preco = Double.valueOf(precoS);
-        
-        Produto produto = new Produto(nome, datef, datev, preco);
-        boolean ok = ProdutoDAO.atualizar(produto);
+        boolean ok = ProdutoDAO.deletar(id);
         
         if(ok){
             response.sendRedirect("/sucesso.jsp");
@@ -63,5 +43,6 @@ public class AlterarProdutoServlet extends HttpServlet {
             response.sendRedirect("/erro.jsp");
         }
     }
+
 
 }

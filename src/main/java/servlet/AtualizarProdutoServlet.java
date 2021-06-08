@@ -6,8 +6,10 @@
 package servlet;
 
 import dao.ProdutoDAO;
+import entidade.Produto;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.util.Objects;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,8 +21,9 @@ import javax.servlet.http.HttpSession;
  *
  * @author Beto
  */
-public class ExcluirProdutoServlet extends HttpServlet {
+public class AtualizarProdutoServlet extends HttpServlet {
 
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -32,8 +35,29 @@ public class ExcluirProdutoServlet extends HttpServlet {
             return;
         }
         
+        //Esta indo vazio para o cadastra.jsp
         String nome = request.getParameter("nome");
-        boolean ok = ProdutoDAO.deletar(nome);
+        Produto produto = ProdutoDAO.getProduto(nome);
+        request.setAttribute("produto", produto);
+        
+        request.getRequestDispatcher("/cadastrarProduto.jsp").forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        String nome = request.getParameter("nome");
+        String dataFabricacao = request.getParameter("data_fabricacao");
+        String dataVencimento = request.getParameter("data_vencimento");
+        String precoS = request.getParameter("preco");
+        
+        Date datef = Date.valueOf(dataFabricacao);
+        Date datev = Date.valueOf(dataVencimento);
+        double preco = Double.valueOf(precoS);
+        
+        Produto produto = new Produto(1, nome, datef, datev, preco);
+        boolean ok = ProdutoDAO.atualizar(produto);
         
         if(ok){
             response.sendRedirect("/sucesso.jsp");
@@ -41,5 +65,6 @@ public class ExcluirProdutoServlet extends HttpServlet {
             response.sendRedirect("/erro.jsp");
         }
     }
+
 
 }
