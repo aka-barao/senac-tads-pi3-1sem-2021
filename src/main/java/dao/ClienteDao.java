@@ -24,11 +24,11 @@ import java.util.logging.Logger;
  */
 public class ClienteDao {
 
-    public static boolean cadastrar(Cliente cliente) throws SQLException, ClassNotFoundException{
+    public static boolean cadastrar(Cliente cliente, String filial) throws SQLException, ClassNotFoundException{
         boolean ok = true;
         String query = "INSERT INTO cliente(nome, rg, cpf, cep,  "
-                + "endereco, telefone, celular, email, estado_civil, data_nascimento) "
-                + "VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                + "endereco, telefone, celular, email, estado_civil, data_nascimento, filial) "
+                + "VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         Connection con = DB.getConexao();
         
         try{
@@ -44,6 +44,7 @@ public class ClienteDao {
             comando.setString(8, cliente.getEmail());
             comando.setString(9, cliente.getEstado_civil());
             comando.setDate(10, cliente.getData_nascimento());
+            comando.setString(11, filial);
 
             comando.executeUpdate();
         }catch (SQLException ex){
@@ -55,15 +56,16 @@ public class ClienteDao {
         return  ok;
     }
     
-    public static List<Cliente> getClientes() throws ClassNotFoundException {
+    public static List<Cliente> getClientes(String filial) throws ClassNotFoundException {
     
         List<Cliente> lista = new ArrayList();
 
-        String query = "select * from cliente";
+        String query = "select * from cliente where filial=?";
         Connection con;
         try {
             con = DB.getConexao();
             PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, filial);
             ResultSet dados = ps.executeQuery();
             while (dados.next()) {
                 String nome = dados.getString("nome");
@@ -76,7 +78,8 @@ public class ClienteDao {
                 String email = dados.getString("email");
                 String estado_civil = dados.getString("estado_civil");
                 Date data_nascimento = dados.getDate("data_nascimento");
-                Cliente cliente = new Cliente(nome, rg, cpf, cep, endereco, cep, cep, email, estado_civil, data_nascimento);
+//                String filial = dados.getString("filial");
+                Cliente cliente = new Cliente(nome, rg, cpf, cep, endereco, cep, cep, email, estado_civil, data_nascimento, filial);
 
                 lista.add(cliente);
             }
@@ -106,16 +109,17 @@ public class ClienteDao {
         return ok;
     }
     
-     public static Cliente getClientes(String cpf1) throws ClassNotFoundException {
+     public static Cliente getClientes(String cpf1, String filial) throws ClassNotFoundException {
     
         Cliente cliente = null;
 
-        String query = "select * from cliente where cpf=?";
+        String query = "select * from cliente where cpf=? and filial=?";
         Connection con;
         try {
             con = DB.getConexao();
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, cpf1);
+            ps.setString(2, filial);
             ResultSet dados = ps.executeQuery();
             if (dados.next()) {
                 String nome = dados.getString("nome");
@@ -129,8 +133,9 @@ public class ClienteDao {
                 String estado_civil = dados.getString("estado_civil");
                 Date data_nascimento = dados.getDate("data_nascimento");
                 int id = dados.getInt("id_cliente");
+//                String filial = dados.getString("filial");
                 
-                cliente = new Cliente(nome, rg, cpf, cep, endereco, telefone, celular, email, estado_civil, data_nascimento);
+                cliente = new Cliente(nome, rg, cpf, cep, endereco, telefone, celular, email, estado_civil, data_nascimento, filial);
                 cliente.setId(id);
                 
             }
@@ -147,7 +152,7 @@ public class ClienteDao {
 
         String query = "UPDATE cliente SET nome = ?, rg = ?, cpf = ?, cep = ?, "
                 + "  endereco = ?, telefone = ?, celular = ?, email = ?,"
-                + " estado_civil = ?, data_nascimento = ?"
+                + " estado_civil = ?, data_nascimento = ?, filial = ? "
                 + " WHERE id_cliente = ?";
         Connection con;
         try {
@@ -163,7 +168,8 @@ public class ClienteDao {
             comando.setString(8, cliente.getEmail());
             comando.setString(9, cliente.getEstado_civil());
             comando.setDate(10, cliente.getData_nascimento());
-            comando.setInt(11, cliente.getId());
+            comando.setString(11, cliente.getFilial());
+            comando.setInt(12, cliente.getId());
 
             comando.executeUpdate();
         } catch (SQLException ex) {

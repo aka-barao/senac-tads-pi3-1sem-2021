@@ -2,6 +2,7 @@ package servlet.cliente;
 
 import dao.ClienteDao;
 import entidade.Cliente;
+import entidade.Usuario;
 import java.io.IOException;
 import java.sql.Date;
 
@@ -10,18 +11,27 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class CadastrarClienteServelet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        HttpSession sessao = request.getSession();
+        Object usuarioSessao = sessao.getAttribute("usuario");
+        if(Objects.isNull(usuarioSessao)) {
+            response.sendRedirect(request.getContextPath() + "/login.jsp");
+            return;
+        }
 
         String nome = request.getParameter("nome");
         int rg = Integer.valueOf(request.getParameter("rg"));
@@ -38,12 +48,14 @@ public class CadastrarClienteServelet extends HttpServlet {
         LocalDate dataEmLocalDate = LocalDate.parse(dataRecebida, formato);
         
         Date data_nascimento = Date.valueOf(dataEmLocalDate);
+        
+        Usuario usuario = (Usuario) usuarioSessao;
 
-        Cliente cliente = new Cliente(nome, rg, cpf, cep, endereco, telefone, celular, email, estado_civil, data_nascimento);
+        Cliente cliente = new Cliente(nome, rg, cpf, cep, endereco, telefone, celular, email, estado_civil, data_nascimento, usuario.getFilial());
 
         boolean ok = false;
         try {
-            ok = ClienteDao.cadastrar(cliente);
+            ok = ClienteDao.cadastrar(cliente, usuario.getFilial());
         } catch (SQLException ex) {
             Logger.getLogger(CadastrarClienteServelet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {

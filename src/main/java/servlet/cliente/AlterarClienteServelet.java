@@ -4,16 +4,19 @@ package servlet.cliente;
 import br.senac.sp.utils.Redirect;
 import dao.ClienteDao;
 import entidade.Cliente;
+import entidade.Usuario;
 import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 public class AlterarClienteServelet extends HttpServlet {
@@ -21,11 +24,21 @@ public class AlterarClienteServelet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        HttpSession sessao = request.getSession();
+        Object usuarioSessao = sessao.getAttribute("usuario");
+        if(Objects.isNull(usuarioSessao)) {
+            response.sendRedirect(request.getContextPath() + "/login.jsp");
+            return;
+        }
+        
+        Usuario usuario = (Usuario) usuarioSessao;
+        
         String cpf = request.getParameter("cpf");
         
         Cliente cliente = null;
         try {
-            cliente = ClienteDao.getClientes(cpf);
+            cliente = ClienteDao.getClientes(cpf, usuario.getFilial());
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(AlterarClienteServelet.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -37,6 +50,14 @@ public class AlterarClienteServelet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        HttpSession sessao = request.getSession();
+        Object usuarioSessao = sessao.getAttribute("usuario");
+        if(Objects.isNull(usuarioSessao)) {
+            response.sendRedirect(request.getContextPath() + "/login.jsp");
+            return;
+        }
+        
         String nome = request.getParameter("nome");
         int rg = Integer.valueOf(request.getParameter("rg"));
         int cpf = Integer.valueOf(request.getParameter("cpf"));
@@ -54,9 +75,11 @@ public class AlterarClienteServelet extends HttpServlet {
         
         Date data_nascimento = Date.valueOf(dataEmLocalDate);
         
+        Usuario usuario = (Usuario) usuarioSessao;
+        
         boolean ok = false;
         try {
-             Cliente cliente = ClienteDao.getClientes(String.valueOf(cpf));
+             Cliente cliente = ClienteDao.getClientes(String.valueOf(cpf), usuario.getFilial());
              
              cliente.setNome(nome);
              cliente.setRg(rg);

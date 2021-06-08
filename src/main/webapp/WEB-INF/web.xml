@@ -4,6 +4,14 @@
         <servlet-name>CadastrarProdutoServlet</servlet-name>
         <servlet-class>servlet.CadastrarProdutoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>servlet.LoginServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeslogarServlet</servlet-name>
+        <servlet-class>servlet.DeslogarServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CadastrarProdutoServlet</servlet-name>
         <url-pattern>/CadastrarProdutoServlet</url-pattern>
@@ -39,6 +47,14 @@
     <servlet-mapping>
         <servlet-name>AlterarClienteServelet</servlet-name>
         <url-pattern>/AlterarClienteServelet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeslogarServlet</servlet-name>
+        <url-pattern>/DeslogarServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

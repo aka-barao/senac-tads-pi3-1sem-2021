@@ -16,9 +16,10 @@ public class Cliente {
     private String email;
     private String estado_civil;
     private Date data_nascimento;
+    private String filial;
     
 
-    public Cliente(String nome, int rg, int cpf, int cep, String endereco, int telefone, int celular, String email, String estado_civil, Date data_nascimento) {
+    public Cliente(String nome, int rg, int cpf, int cep, String endereco, int telefone, int celular, String email, String estado_civil, Date data_nascimento, String filial) {
         this.nome = nome;
         this.rg = rg;
         this.cpf = cpf;
@@ -117,6 +118,14 @@ public class Cliente {
 
     public void setData_nascimento(Date data_nascimento) {
         this.data_nascimento = data_nascimento;
+    }
+    
+    public String getFilial() {
+        return filial;
+    }
+
+    public void setFilial(String filial) {
+        this.filial = filial;
     }
     
     

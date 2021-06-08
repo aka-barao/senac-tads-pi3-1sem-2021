@@ -5,10 +5,8 @@
  */
 package servlet;
 
-import dao.ProdutoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Objects;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,29 +15,20 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Beto
+ * @author Dell i5
  */
-public class ExcluirProdutoServlet extends HttpServlet {
+public class DeslogarServlet extends HttpServlet {
+
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
         HttpSession sessao = request.getSession();
-        Object usuarioSessao = sessao.getAttribute("usuario");
-        if(Objects.isNull(usuarioSessao)) {
-            response.sendRedirect(request.getContextPath() + "/login.jsp");
-            return;
-        }
+        sessao.setAttribute("usuario", null);
         
-        String nome = request.getParameter("nome");
-        boolean ok = ProdutoDAO.deletar(nome);
-        
-        if(ok){
-            response.sendRedirect("/sucesso.jsp");
-        }else{
-            response.sendRedirect("/erro.jsp");
-        }
+        response.sendRedirect(request.getContextPath() + "/login.jsp");
+
     }
 
 }
