@@ -12,6 +12,10 @@
         <servlet-name>DeslogarServlet</servlet-name>
         <servlet-class>servlet.DeslogarServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RealizarVendaServlet</servlet-name>
+        <servlet-class>servlet.venda.RealizarVendaServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CadastrarProdutoServlet</servlet-name>
         <url-pattern>/CadastrarProdutoServlet</url-pattern>
@@ -83,6 +87,10 @@
     <servlet-mapping>
         <servlet-name>DeslogarServlet</servlet-name>
         <url-pattern>/DeslogarServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RealizarVendaServlet</servlet-name>
+        <url-pattern>/RealizarVendaServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
