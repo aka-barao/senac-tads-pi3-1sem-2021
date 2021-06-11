@@ -20,29 +20,39 @@ import javax.servlet.http.HttpServletResponse;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
-//import org.json.JSONArray;
-//import org.json.JSONObject;
+import java.util.logging.Logger;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  *
  * @author vinic
  */
 public class RealizarVendaServlet extends HttpServlet {
+    
+    private static final Logger log;
+
+    static {
+        System.setProperty("java.util.logging.SimpleFormatter.format", "[%4$-7s] %5$s %n");
+        log = Logger.getLogger(RealizarVendaServlet.class.getName());
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         // Carregar os clientes
-        //List<Cliente> listaClientes = ClienteDao.getClientes();
-        //request.setAttribute("listaClientes", listaClientes);
+        List<Cliente> listaClientes = ClienteDao.getClientes();
+        log.info(listaClientes.toString());
+        request.setAttribute("listaClientes", listaClientes);
         
         // Carregar os produtos
         List<Produto> listaProdutos = ProdutoDAO.getProdutos();
+        //log.info(listaProdutos.toString());
         request.setAttribute("listaProdutos", listaProdutos);
 
         //Direcionar para a tela de vendas
-        request.getRequestDispatcher("/acesso_restrito/realizarVenda.jsp").forward(request, response);
+        request.getRequestDispatcher("/realizarVenda.jsp").forward(request, response);
 
     }
 
@@ -50,21 +60,26 @@ public class RealizarVendaServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String dados = request.getParameter("dados");
-        //JSONObject jsonDados = new JSONObject(dados);
+        JSONObject jsonDados = new JSONObject(dados);
         List<Venda> vendas = new ArrayList<>();
 
-        //String cliente = jsonDados.getString("cliente");
+        String cliente = jsonDados.getString("cliente");
+        String filial = jsonDados.getString("filial");
 
-        //JSONArray produtos = jsonDados.getJSONArray("produtos");
-        //for (int i = 0; i < produtos.length(); i++) {
-        //    Venda venda = new Venda();
-        //    venda.setIdCliente(Integer.parseInt(cliente));
-        //    JSONObject produto = produtos.getJSONObject(i);
-        //    venda.setIdProduto(produto.getInt("id"));
-        //    venda.setPreco(produto.getDouble("preco"));
-        //    venda.setQte(produto.getInt("quantidade"));
-        //    vendas.add(venda);
+        JSONArray produtos = jsonDados.getJSONArray("produtos");
+        for (int i = 0; i < produtos.length(); i++) {
+            Venda venda = new Venda();
+            venda.setIdCliente(Integer.parseInt(cliente));
+            venda.setFilial(filial);
+            JSONObject produto = produtos.getJSONObject(i);
+            venda.setIdProduto(produto.getInt("id"));
+            venda.setPreco(produto.getDouble("preco"));
+            venda.setQte(produto.getInt("quantidade"));
+            vendas.add(venda);
         }
-        //VendasDAO.cadastrar(vendas);
+
+        log.info(Integer.toString(vendas.get(0).getIdCliente()));
+        VendasDAO.cadastrar(vendas);
     }
 
+}

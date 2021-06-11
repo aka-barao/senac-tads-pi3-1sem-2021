@@ -17,6 +17,7 @@ public class Venda {
     private Date dataVenda;
     private int qte;
     private Double preco;
+    private String filial;
 
     public int getIdCliente() {
         return idCliente;
@@ -57,5 +58,15 @@ public class Venda {
     public void setPreco(Double preco) {
         this.preco = preco;
     }
+
+    public String getFilial() {
+        return filial;
+    }
+
+    public void setFilial(String filial) {
+        this.filial = filial;
+    }
+    
+    
     
 }

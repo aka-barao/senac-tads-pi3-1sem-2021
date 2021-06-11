@@ -24,6 +24,21 @@ import java.util.logging.Logger;
 public class VendasDAO {
     public static boolean cadastrar(List<Venda> vendas) {
         boolean ok = true;
+        
+        String queryVendas = "insert into vendas (id_cliente, filial) values (?, ?)";
+        Connection con;
+        try {
+            con = DB.getConexao();
+            PreparedStatement ps = con.prepareStatement(queryVendas);
+            ps.setInt(1, vendas.get(0).getIdCliente());
+            ps.setString(2, vendas.get(0).getFilial());
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+            ok = false;
+            return ok;
+        }
+        
         for(Venda venda: vendas) {
             ok = cadastrar(venda);
             if (!ok) {
@@ -35,31 +50,30 @@ public class VendasDAO {
     
     public static boolean cadastrar(Venda venda) {
         boolean ok = true;
-        String queryVendas = "insert into vendas (id_cliente) values (?)"; // TO-DO: Implementar filial da empresa
+        String queryVendas = "insert into vendas (id_cliente, filial) values (?, ?)";
         Connection con;
+        
+        /*
         try {
             con = DB.getConexao();
             PreparedStatement ps = con.prepareStatement(queryVendas);
-            ps.setDate(1, venda.getDataVenda());
-            ps.setInt(2, venda.getIdCliente());
-            ps.setInt(3, venda.getIdProduto());
-            ps.setInt(4, venda.getQte());
-            ps.setDouble(5, venda.getPreco());
+            ps.setInt(1, venda.getIdCliente());
+            ps.setString(2, venda.getFilial());
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
             ok = false;
             return ok;
-        }
+        }*/
         
-        String queryVendasProdutos = "insert into vendas_produtos ((SELECT IDENT_CURRENT('vendas')), id_produto, quantidade, valor_total)"
-                + " values (?,?,?,?)";
+        String queryVendasProdutos = "insert into vendas_produtos (id_venda, id_produto, quantidade, valor_total)"
+                + " values ((SELECT IDENT_CURRENT('vendas')),?,?,?)";
         try {
             con = DB.getConexao();
             PreparedStatement ps = con.prepareStatement(queryVendasProdutos);
-            ps.setInt(2, venda.getIdProduto());
-            ps.setInt(3, venda.getQte());
-            ps.setDouble(4, venda.getPreco());
+            ps.setInt(1, venda.getIdProduto());
+            ps.setInt(2, venda.getQte());
+            ps.setDouble(3, venda.getPreco());
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
