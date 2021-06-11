@@ -35,9 +35,11 @@ public class AtualizarProdutoServlet extends HttpServlet {
             return;
         }
         
-        //Esta indo vazio para o cadastra.jsp
-        String nome = request.getParameter("nome");
-        Produto produto = ProdutoDAO.getProduto(nome);
+        String idStr = request.getParameter("id");
+        int id = Integer.valueOf(idStr);
+        
+        
+        Produto produto = ProdutoDAO.getProduto(id);
         request.setAttribute("produto", produto);
         
         request.getRequestDispatcher("/cadastrarProduto.jsp").forward(request, response);
@@ -47,22 +49,28 @@ public class AtualizarProdutoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        //atualizar da erro quando pega o id 
+        
+        String idStr = request.getParameter("id");
+        int id = Integer.valueOf(idStr);
+        
         String nome = request.getParameter("nome");
         String dataFabricacao = request.getParameter("data_fabricacao");
         String dataVencimento = request.getParameter("data_vencimento");
         String precoS = request.getParameter("preco");
         
+        
         Date datef = Date.valueOf(dataFabricacao);
         Date datev = Date.valueOf(dataVencimento);
         double preco = Double.valueOf(precoS);
         
-        Produto produto = new Produto(1, nome, datef, datev, preco);
+        Produto produto = new Produto(id, nome, datef, datev, preco);
         boolean ok = ProdutoDAO.atualizar(produto);
         
         if(ok){
-            response.sendRedirect("/sucesso.jsp");
+            response.sendRedirect(request.getContextPath() + "/sucesso.jsp");
         }else{
-            response.sendRedirect("/erro.jsp");
+            response.sendRedirect(request.getContextPath() + "/erro.jsp");
         }
     }
 

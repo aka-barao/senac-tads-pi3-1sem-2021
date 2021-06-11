@@ -11,11 +11,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <%
-    ProdutoDAO dao = new ProdutoDAO();
-    List<Produto> lista;
-    lista = dao.getProdutos();
-    %>
+    
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Lista Produto</title>
@@ -29,7 +25,7 @@
                 crossorigin="anonymous"></script>
 
         <script type="text/javascript">
-            function mostraTelaConfirmacao()) {
+            function mostraTelaConfirmacao(id) {
                 console.log("id", id);
                 $("#idProduto").val(id);
 
@@ -45,7 +41,7 @@
                 var id = $("#idProduto").val();
                 fecharTelaConfirmacao();
                 console.log("id", id);
-                  $.ajax("RemoverProdutoServelet?id=" + id).done(function () {
+                  $.ajax("RemoverProdutoServlet?id=" + id).done(function () {
                          location.reload();
                       })
                       .fail(function () {
@@ -71,34 +67,24 @@
             <th>Data de Fabricação</th>
             <th>Data de Vencimento</th>
             <th>Preço</th>
-            <th></th>
-            <th></th>
+            <th>Alterar</th>
+            <th>Excluir</th>
             
-            <%
-            for (Produto registro: lista){
-           
-            %>
+            <c:forEach items="${listaProdutos}" var="produto">
                 <tr>
+                    <td>${produto.id}</td>
+                    <td>${produto.nome}</td>
+                    <td>${produto.dataFabricacao}</td>
+                    <td>${produto.dataVencimento}</td>
+                     <td>${produto.preco}</td>
                     
-                    <td><%=registro.getId()%></td>
-                    <td><%=registro.getNome()%></td>
-                    <td><%=registro.getDataFabricacao()%></td>
-                    <td><%=registro.getDataVencimento()%></td>
-                    <td><%=registro.getPreco()%></td>
-                    
-                    
-                    <td><button id="botao1" type="button" class="btn btn-outline-primary"><a href="AtualizarProdutoServlet?id=${registro.id}">Alterar</a></button></td>
-                    <td><button type="button" class="btn btn-link" onclick="mostraTelaConfirmacao('${registro.getId()}')">Excluir</button></td>
-                    
-                </tr>
-            
-             <%
-            
-            }
-            %>
+                    <td><a href="AtualizarProdutoServlet?id=${produto.id}">Alterar</a></td>
+                    <td><button type="button" class="btn btn-link" onclick="mostraTelaConfirmacao('${produto.id}')">Excluir</button></td>
+                </tr>        
+            </c:forEach>
         </table>
         <!-- Modal -->
-        <div class="modal" id="modalConfirmacao" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal" id="modalConfirmacao">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -106,7 +92,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                  <p>Confirmar exclusão do Produto<label id="nomeProduto"></label>? </p>
+                  <p>Confirmar exclusão do Produto?</p>
                   <input type="hidden" id="idProduto"/>
               </div>
               <div class="modal-footer">

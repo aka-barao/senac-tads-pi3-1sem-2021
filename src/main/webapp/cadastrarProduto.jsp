@@ -84,8 +84,17 @@
                     <h1>Atualizar Produto:</h1>
                     <br><br>
 
-                <form action="AtualizarProdutoServlet" method="POST">
-                    <div class="row">
+            <form action="AtualizarProdutoServlet" method="POST">
+                <div class="row">
+                <div class="col-md-5">
+                <div class="input-group mb-3">
+                <span class="input-group-text">id</span>
+                <input type="text" class="form-control" name="id" required="true" value="${produto.id}" >
+
+                </div>
+                </div>
+           </div>
+            <div class="row">
                 <div class="col-md-5">
                 <div class="input-group mb-3">
                 <span class="input-group-text">Nome</span>

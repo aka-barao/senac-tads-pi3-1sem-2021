@@ -20,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+//import org.json.JSONArray;
+//import org.json.JSONObject;
 
 /**
  *
@@ -34,8 +34,8 @@ public class RealizarVendaServlet extends HttpServlet {
             throws ServletException, IOException {
 
         // Carregar os clientes
-        List<Cliente> listaClientes = ClienteDao.getClientes();
-        request.setAttribute("listaClientes", listaClientes);
+        //List<Cliente> listaClientes = ClienteDao.getClientes();
+        //request.setAttribute("listaClientes", listaClientes);
         
         // Carregar os produtos
         List<Produto> listaProdutos = ProdutoDAO.getProdutos();
@@ -50,22 +50,21 @@ public class RealizarVendaServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String dados = request.getParameter("dados");
-        JSONObject jsonDados = new JSONObject(dados);
+        //JSONObject jsonDados = new JSONObject(dados);
         List<Venda> vendas = new ArrayList<>();
 
-        String cliente = jsonDados.getString("cliente");
+        //String cliente = jsonDados.getString("cliente");
 
-        JSONArray produtos = jsonDados.getJSONArray("produtos");
-        for (int i = 0; i < produtos.length(); i++) {
-            Venda venda = new Venda();
-            venda.setIdCliente(Integer.parseInt(cliente));
-            JSONObject produto = produtos.getJSONObject(i);
-            venda.setIdProduto(produto.getInt("id"));
-            venda.setPreco(produto.getDouble("preco"));
-            venda.setQte(produto.getInt("quantidade"));
-            vendas.add(venda);
+        //JSONArray produtos = jsonDados.getJSONArray("produtos");
+        //for (int i = 0; i < produtos.length(); i++) {
+        //    Venda venda = new Venda();
+        //    venda.setIdCliente(Integer.parseInt(cliente));
+        //    JSONObject produto = produtos.getJSONObject(i);
+        //    venda.setIdProduto(produto.getInt("id"));
+        //    venda.setPreco(produto.getDouble("preco"));
+        //    venda.setQte(produto.getInt("quantidade"));
+        //    vendas.add(venda);
         }
-        VendasDAO.cadastrar(vendas);
+        //VendasDAO.cadastrar(vendas);
     }
 
-}
