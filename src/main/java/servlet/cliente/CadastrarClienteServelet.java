@@ -51,7 +51,7 @@ public class CadastrarClienteServelet extends HttpServlet {
         
         Usuario usuario = (Usuario) usuarioSessao;
 
-        Cliente cliente = new Cliente(nome, rg, cpf, cep, endereco, telefone, celular, email, estado_civil, data_nascimento, usuario.getFilial());
+        Cliente cliente = new Cliente(nome, rg, cpf, cep, endereco, telefone, celular, email, estado_civil, data_nascimento);
 
         boolean ok = false;
         try {

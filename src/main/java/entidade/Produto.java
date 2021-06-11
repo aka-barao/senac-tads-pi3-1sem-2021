@@ -69,4 +69,15 @@ public class Produto {
         this.preco = preco;
     }
     
+    @Override
+    public String toString() {
+        
+        // Gambiarra para remover os centavos do preço do produto.
+        // Tava dando erro no JavaScript, única alternativa que encontrei pra calcular o preço (aproximado) do carrinho
+        String valorEmTexto = Double.toString(preco);
+        String valorComPonto = valorEmTexto.substring(0, valorEmTexto.length() - 3);
+        
+        return String.format("{'id': %d, 'nome': '%s', 'preco': %s }", id, nome, valorComPonto);
+    }
+    
 }
