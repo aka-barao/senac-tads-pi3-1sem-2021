@@ -32,7 +32,7 @@
 
         <div class="col col-md-6 col-lg-3 border-0 d-flex justify-content-around">
             <div class="card border-0 mx-auto" style="width: 12rem;">
-                <button disabled="disabled" id="botao1" type="button" class="btn btn-outline-primary"><a href="" style="color: white">Venda</a></button>
+                <button id="botao1" type="button" class="btn btn-outline-primary"><a href="RealizarVendaServlet" style="color: white">Venda</a></button>
             </div>
         </div>
 

@@ -39,7 +39,7 @@ public class AlterarClienteServelet extends HttpServlet {
         Cliente cliente = null;
         try {
             cliente = ClienteDao.getClientes(cpf, usuario.getFilial());
-        } catch (ClassNotFoundException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(AlterarClienteServelet.class.getName()).log(Level.SEVERE, null, ex);
         }
         request.setAttribute("cliente", cliente);

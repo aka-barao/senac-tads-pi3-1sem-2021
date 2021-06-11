@@ -38,9 +38,9 @@ public class RemoverProdutoServlet extends HttpServlet {
         boolean ok = ProdutoDAO.deletar(id);
         
         if(ok){
-            response.sendRedirect("/sucesso.jsp");
+            response.sendRedirect(request.getContextPath() + "/sucesso.jsp");
         }else{
-            response.sendRedirect("/erro.jsp");
+            response.sendRedirect(request.getContextPath() + "/erro.jsp");
         }
     }
 

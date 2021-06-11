@@ -19,7 +19,7 @@ public class Cliente {
     private String filial;
     
 
-    public Cliente(String nome, int rg, int cpf, int cep, String endereco, int telefone, int celular, String email, String estado_civil, Date data_nascimento, String filial) {
+    public Cliente(String nome, int rg, int cpf, int cep, String endereco, int telefone, int celular, String email, String estado_civil, Date data_nascimento) {
         this.nome = nome;
         this.rg = rg;
         this.cpf = cpf;

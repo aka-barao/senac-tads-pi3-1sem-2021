@@ -56,16 +56,16 @@ public class ClienteDao {
         return  ok;
     }
     
-    public static List<Cliente> getClientes(String filial) throws ClassNotFoundException {
+    public static List<Cliente> getClientes(){
     
         List<Cliente> lista = new ArrayList();
 
-        String query = "select * from cliente where filial=?";
+        String query = "select * from cliente";
         Connection con;
         try {
             con = DB.getConexao();
             PreparedStatement ps = con.prepareStatement(query);
-            ps.setString(1, filial);
+            //ps.setString(1, filial);
             ResultSet dados = ps.executeQuery();
             while (dados.next()) {
                 String nome = dados.getString("nome");
@@ -78,8 +78,10 @@ public class ClienteDao {
                 String email = dados.getString("email");
                 String estado_civil = dados.getString("estado_civil");
                 Date data_nascimento = dados.getDate("data_nascimento");
+                int id = dados.getInt("id_cliente");
 //                String filial = dados.getString("filial");
-                Cliente cliente = new Cliente(nome, rg, cpf, cep, endereco, cep, cep, email, estado_civil, data_nascimento, filial);
+                Cliente cliente = new Cliente(nome, rg, cpf, cep, endereco, cep, cep, email, estado_civil, data_nascimento);
+                cliente.setId(id);
 
                 lista.add(cliente);
             }
@@ -109,7 +111,7 @@ public class ClienteDao {
         return ok;
     }
     
-     public static Cliente getClientes(String cpf1, String filial) throws ClassNotFoundException {
+     public static Cliente getClientes(String cpf1, String filial){
     
         Cliente cliente = null;
 
@@ -135,7 +137,7 @@ public class ClienteDao {
                 int id = dados.getInt("id_cliente");
 //                String filial = dados.getString("filial");
                 
-                cliente = new Cliente(nome, rg, cpf, cep, endereco, telefone, celular, email, estado_civil, data_nascimento, filial);
+                cliente = new Cliente(nome, rg, cpf, cep, endereco, telefone, celular, email, estado_civil, data_nascimento);
                 cliente.setId(id);
                 
             }

@@ -24,6 +24,13 @@ import javax.servlet.http.HttpSession;
  * @author Dell i5
  */
 public class ListaClienteServlet extends HttpServlet {
+    
+    private static final Logger log;
+    
+    static {
+        System.setProperty("java.util.logging.SimpleFormatter.format", "[%4$-7s] %5$s %n");
+        log = Logger.getLogger(ListaClienteServlet.class.getName());
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -40,11 +47,12 @@ public class ListaClienteServlet extends HttpServlet {
         
         List<Cliente> listaClientes = null;
         try {
-            listaClientes = ClienteDao.getClientes(usuario.getFilial());
-        } catch (ClassNotFoundException ex) {
+            listaClientes = ClienteDao.getClientes();
+        } catch (Exception ex) {
             Logger.getLogger(ListaClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        log.info(listaClientes.toString());
         request.setAttribute("listaClientes", listaClientes);
         
         request.getRequestDispatcher("/listaClientes.jsp").forward(request, response);
