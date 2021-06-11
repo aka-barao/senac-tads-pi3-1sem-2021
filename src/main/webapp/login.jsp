@@ -11,12 +11,23 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+        <link rel="stylesheet" href="assets/css/login.css"/>
         <title>Login</title>
     </head>
-    <body class="container">
+    <c:import url="nav.jsp"/>
+    <body>
  
          
-         <c:if test="${param.loginInvalido}" >
+        
+        
+ <div class="row">
+  <div class="col-md-4"></div>
+  
+  
+  
+  
+  
+  <div class="col-md-4"> <c:if test="${param.loginInvalido}" >
             <div class="alert alert-danger" role="alert">
                 Login inválido!
             </div>
@@ -29,5 +40,16 @@
                
                 <button type="submit" class="btn btn-primary" >Enviar</button>
             </form>
+  </div>
+  
+  
+  
+  
+  <div class="col-md-4"></div>
+  
+
+</div>
+        
+       
     </body>
 </html>

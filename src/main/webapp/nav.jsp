@@ -26,6 +26,7 @@
             <a href="homeProdutos.jsp">Produtos</a> 
             <a href="homeVenda.jsp">Vendas</a> 
             <a href="homeRelatorios.jsp">Relatórios</a> 
+            <a style="color:lightblue;" href="login.jsp">Login</a> 
             <a style="color:red;" href="DeslogarServlet">Logout</a> 
               
           
